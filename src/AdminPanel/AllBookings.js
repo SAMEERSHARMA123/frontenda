@@ -15,7 +15,7 @@ export default function AdminBookings() {
     const fetchAllBookings = async () => {
       try {
         const token = sessionStorage.getItem("token");
-        const response = await axios.get("http://localhost:5000/api/bookings/admin/allbookings", {
+        const response = await axios.get("https://appoint-kjul.onrender.com/api/bookings/admin/allbookings", {
           headers: {
             Authorization: `Bearer ${token}`
           }

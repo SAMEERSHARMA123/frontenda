@@ -15,7 +15,7 @@ export default function MyAppointments() {
 
     try {
       const result = await axios.get(
-        `http://localhost:5000/api/bookings/allbookings?email=${encodeURIComponent(
+        `https://appoint-kjul.onrender.com/api/bookings/allbookings?email=${encodeURIComponent(
           user.email
         )}`,
         {

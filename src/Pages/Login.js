@@ -13,7 +13,7 @@ export default function Login() {
 
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   // Input handler
   const handleChange = (e) => {
@@ -33,32 +33,33 @@ export default function Login() {
   };
 
   // Submit
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) {
       return alert("Please fix the errors before submitting");
     }
-     try{   
+    try {
       console.log(formData);
-      const results = await axios.post("https://appoint-kjul.onrender.com/api/auth/login", formData);
+      const results = await axios.post(
+        "https://appoint-kjul.onrender.com/api/auth/login",
+        formData
+      );
       console.log(results.data?.token);
-      if(results.data?.token){
-      alert("Login successful!");
-      sessionStorage.setItem("token", results.data?.token);
-      sessionStorage.setItem("user",JSON.stringify(results.data?.user));
-      
-      // Check if user role is admin and navigate to admin panel
-      if(results.data?.user?.role === "admin"){
-        navigate("/admin/allbookings");
-      } else {
-        navigate("/");
-      }
+      if (results.data?.token) {
+        alert("Login successful!");
+        sessionStorage.setItem("token", results.data?.token);
+        sessionStorage.setItem("user", JSON.stringify(results.data?.user));
 
+        // Check if user role is admin and navigate to admin panel
+        if (results.data?.user?.role === "admin") {
+          navigate("/admin/allbookings");
+        } else {
+          navigate("/");
+        }
       }
-     }
-     catch(err){
+    } catch (err) {
       console.log(err);
-     }
+    }
   };
 
   return (
@@ -122,9 +123,13 @@ export default function Login() {
               />
               <span>Remember me</span>
             </label>
-            <a href="/forgot-password" className="text-blue-500 hover:underline">
+            <button
+              type="button"
+              onClick={() => navigate("/forgot-password")}
+              className="text-blue-500 hover:underline"
+            >
               Forgot Password?
-            </a>
+            </button>
           </div>
 
           {/* Login Button */}
@@ -138,9 +143,13 @@ export default function Login() {
           {/* Register Link */}
           <p className="text-center text-sm mt-3">
             Don't have an account?{" "}
-            <a href="/register" className="text-blue-500 hover:underline">
+            <button
+              type="button"
+              onClick={() => navigate("/register")}
+              className="text-blue-500 hover:underline"
+            >
               Register here
-            </a>
+            </button>
           </p>
         </form>
       </motion.div>

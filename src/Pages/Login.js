@@ -40,7 +40,7 @@ export default function Login() {
     }
      try{   
       console.log(formData);
-      const results = await axios.post("http://localhost:5000/api/auth/login", formData);
+      const results = await axios.post("https://appoint-kjul.onrender.com/api/auth/login", formData);
       console.log(results.data?.token);
       if(results.data?.token){
       alert("Login successful!");

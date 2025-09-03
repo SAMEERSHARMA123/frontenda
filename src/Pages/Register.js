@@ -53,7 +53,7 @@ export default function Register() {
      return alert("please input valid data");
     }  
         try{
-          const results = await axios.post("http://localhost:5000/api/auth/register", formData);
+          const results = await axios.post("https://appoint-kjul.onrender.com/api/auth/register", formData);
           console.log(results.data?.message);
 
           if(results.data?.message === "User registered"){

@@ -19,7 +19,7 @@ export default function BookAppointment() {
     const fetchSlots = async () => {
       try {
         const token = sessionStorage.getItem("token");
-        const res = await axios.get("http://localhost:5000/api/slots", {
+        const res = await axios.get("https://appoint-kjul.onrender.com/api/slots", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -71,7 +71,7 @@ export default function BookAppointment() {
     console.log("Submitting form data:", formData);
 
     const results = await axios.post(
-      "http://localhost:5000/api/bookings/booking",
+      "https://appoint-kjul.onrender.com/api/bookings/booking",
       formData,
       {
         headers: {
